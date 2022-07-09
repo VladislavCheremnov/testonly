@@ -1,28 +1,21 @@
 <?php
-    require_once('db.php');
+    require_once('modules/db.php');
+    require_once('modules/function.php');
 
     
     if(isset($_POST['submit'])){
         $err = [];
 
         #Валидация логина.
-        if(!preg_match("/^[a-zA-Z0-9]+$/",$_POST['login'])){
-        
-            $err[] = "В поле логин могут быть только латинские символы и цифры.";
-        }
-
-        if(strlen($_POST['login']) < 3 or strlen($_POST['login']) > 30){
-        
-            $err[] = "Поле логин должно содержать от 3 до 32 символов.";
-        }
+        login_validation($_POST['login']);
 
         #Проверка почты на уникальность.
-        $query = mysqli_query($link, "SELECT id FROM users WHERE email='".mysqli_real_escape_string($link, $_POST['email'])."'");
+        /*$query = mysqli_query($link, "SELECT id FROM users WHERE email='".mysqli_real_escape_string($link, $_POST['email'])."'");
 
         if(mysqli_num_rows($query) > 0){
         
             $err[] = "Такая почта уже зарегистрирована!";
-        }
+        }*/
 
         #Проверка на идентичность паролей в обоих полях.
 
@@ -54,9 +47,9 @@
 ?>
 
     <form method="POST">
-    Логин <input name="login" type="text" required><br>
-    Email <input name="email" type="email" required><br>
-    Пароль <input name="password" type="password" required><br>
-    Повторите пароль <input name="repeatpassword" type="password" required><br>
+        <p><input name="login" type="text" required> Логин</p>
+        <p><input name="email" type="email" required> Email</p>
+        <p><input name="password" type="password" required> Пароль</p>
+        <p><input name="repeatpassword" type="password" required> Повторите пароль</p>
     <input name="submit" type="submit" value="Зарегистрироваться">
     </form>
