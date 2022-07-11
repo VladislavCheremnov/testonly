@@ -1,7 +1,11 @@
 <?php
     require_once('db.php');
 
-    if(isset($_POST['submit'])){
+    if(!isset($_POST['submit'])){
+
+    echo "Регистрация прошла успешно!";
+
+    } else {
 
         #Вытаскиваем из БД запись, у которой логин равняется введенному
 
@@ -17,7 +21,7 @@
 ?>
 
 <form method="POST">
-Логин <input name="login" type="text" required><br>
-Пароль <input name="password" type="password" required><br>
+    <p><input name="login" type="text" required> Логин</p>
+    <p><input name="password" type="password" required> Пароль</p>
 <input name="submit" type="submit" value="Войти">
 </form>

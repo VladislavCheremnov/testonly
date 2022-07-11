@@ -54,9 +54,9 @@
 ?>
 
     <form method="POST">
-    Логин <input name="login" type="text" required><br>
-    Email <input name="email" type="email" required><br>
-    Пароль <input name="password" type="password" required><br>
-    Повторите пароль <input name="repeatpassword" type="password" required><br>
+        <p><input name="login" type="text" required> Логин</p>
+        <p><input name="email" type="email" required> Email</p>
+        <p><input name="password" type="password" required> Пароль</p>
+        <p><input name="repeatpassword" type="password" required> Повторите пароль</p>
     <input name="submit" type="submit" value="Зарегистрироваться">
     </form>
